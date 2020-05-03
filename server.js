@@ -8,7 +8,7 @@ const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0; 
 const db = knex({
     client: 'pg',
     connection: {
@@ -36,6 +36,7 @@ app.put('/image', (req, res) => image.increment(req, res, db));
 app.listen(process.env.PORT || 3000, ()=>{
     console.log(`App is Running on port ${process.env.PORT}`);
 })
+
 
 /*
 
